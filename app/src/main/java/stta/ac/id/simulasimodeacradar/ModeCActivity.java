@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class ModeCActivity extends AppCompatActivity {
     String[] option_d2 = new String[]{"Pilih Nilai D2","0", "1"};
@@ -32,7 +38,7 @@ public class ModeCActivity extends AppCompatActivity {
     Button btn_proses_mode_c;
     String d2,d4,a1,a2,a4,b1,b2,b4,c1,c2,c4;
     String x_d2,x_d4,x_a1,x_a2,x_a4,x_b1,x_b2,x_b4,x_c1,x_c2,x_c4;
-    String xor;
+    int binner,aturanc1c2c4,result,final_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,10 +106,68 @@ public class ModeCActivity extends AppCompatActivity {
                     } else {
                         x_d2 = "1";
                     }
-                    if (x_d2.equals("0") && d4.equals("0") || x_d2.equals("1") && d4.equals("1")){
+
+                    if (x_d2.equals(d4)){
                         x_d4 = "0";
+                    } else {
+                        x_d4 = "1";
                     }
-                    showResultSimulation();
+
+                    if (x_d4.equals(a1)){
+                        x_a1 = "0";
+                    } else {
+                        x_a1 = "1";
+                    }
+
+                    if (x_a1.equals(a2)){
+                        x_a2 = "0";
+                    } else {
+                        x_a2 = "1";
+                    }
+
+                    if (x_a2.equals(a4)){
+                        x_a4 = "0";
+                    } else {
+                        x_a4 = "1";
+                    }
+
+                    if (x_a4.equals(b1)){
+                        x_b1 = "0";
+                    } else {
+                        x_b1 = "1";
+                    }
+
+                    if (x_b1.equals(b2)){
+                        x_b2 = "0";
+                    } else {
+                        x_b2 = "1";
+                    }
+
+                    if (x_b2.equals(b4)){
+                        x_b4 = "0";
+                    } else {
+                        x_b4 = "1";
+                    }
+
+                    if ((c1+c2+c4).equals("100")){
+                        aturanc1c2c4 = +200;
+                    } if ((c1+c2+c4).equals("110")){
+                        aturanc1c2c4 = +100;
+                    } if ((c1+c2+c4).equals("010")){
+                        aturanc1c2c4 = 0;
+                    } if ((c1+c2+c4).equals("011")){
+                        aturanc1c2c4 = -100;
+                    } if ((c1+c2+c4).equals("001")){
+                        aturanc1c2c4 = -200;
+                    }
+
+                    binner = (Integer.parseInt(x_d2)*128) + (Integer.parseInt(x_d4)*64) + (Integer.parseInt(x_a1)*32)  + (Integer.parseInt(x_a2)*16) + (Integer.parseInt(x_a4)*8) + (Integer.parseInt(x_b1)*4) + (Integer.parseInt(x_b2)*2) + (Integer.parseInt(x_b4)*1);
+                    result = (binner * 500) - 1000;
+                    final_result = result + aturanc1c2c4;
+
+                    showResultSimulation(addDotSeparator(final_result) + " feet");
+//                    Toast.makeText(ModeCActivity.this, x_d2 + x_d4 + x_a1 + x_a2 + x_a4 + x_b1 + x_b2 + x_b4, Toast.LENGTH_SHORT).show();
+//                    Log.i("Botika",String.valueOf (final_result));
                 }
             }
         });
@@ -285,7 +349,7 @@ public class ModeCActivity extends AppCompatActivity {
         });
     }
 
-    private void showResultSimulation() {
+    private void showResultSimulation(String final_result) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
         dialog.setContentView(R.layout.popup_mode_c);
@@ -295,6 +359,10 @@ public class ModeCActivity extends AppCompatActivity {
         lp.copyFrom(dialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        TextView txt_result = dialog.findViewById(R.id.txt_result_modec);
+        txt_result.setText(final_result);
+
 
         ((ImageButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,12 +386,12 @@ public class ModeCActivity extends AppCompatActivity {
         dialog.getWindow().setAttributes(lp);
     }
 
-    public String XOR(String A, String B){
-        if (A.equals("0") && B.equals("0")){
-            xor = "0";
-        }
-        return xor;
+    public static String addDotSeparator(int d) {
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
+        formatter .applyPattern("#,###");
+        return formatter.format(d);
     }
+
 
     @Override
     public void onBackPressed() {

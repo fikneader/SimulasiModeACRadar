@@ -55,7 +55,7 @@
         android:padding="@dimen/spacing_mlarge">
 
         <TextView
-            android:id="@+id/content"
+            android:id="@+id/txt_result_modec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_middle"

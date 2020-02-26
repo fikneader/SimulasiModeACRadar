@@ -30,6 +30,9 @@ public class ModeCActivity extends AppCompatActivity {
     Spinner spinner_d2,spinner_d4,spinner_a1,spinner_a2,spinner_a4,spinner_b1,spinner_b2,spinner_b4,spinner_c1,
             spinner_c2,spinner_c4;
     Button btn_proses_mode_c;
+    String d2,d4,a1,a2,a4,b1,b2,b4,c1,c2,c4;
+    String x_d2,x_d4,x_a1,x_a2,x_a4,x_b1,x_b2,x_b4,x_c1,x_c2,x_c4;
+    String xor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,61 @@ public class ModeCActivity extends AppCompatActivity {
         btn_proses_mode_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showResultSimulation();
+                if (d2.equals("Pilih Nilai D2")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai D2 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (d4.equals("Pilih Nilai D4")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai D4 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (a1.equals("Pilih Nilai A1")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai A1 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (a2.equals("Pilih Nilai A2")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai A2 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (a4.equals("Pilih Nilai A4")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai A4 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (b1.equals("Pilih Nilai B1")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai B1 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (b2.equals("Pilih Nilai B2")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai B2 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (b4.equals("Pilih Nilai B4")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai B4 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (c1.equals("Pilih Nilai C1")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai C1 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (c2.equals("Pilih Nilai C2")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai C2 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (c4.equals("Pilih Nilai C4")){
+                    Toast.makeText(ModeCActivity.this, "Silahkan pilih nilai C4 terlebih dahulu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    if (d2.equals("0")){
+                        x_d2 = "0";
+                    } else {
+                        x_d2 = "1";
+                    }
+                    if (x_d2.equals("0") && d4.equals("0") || x_d2.equals("1") && d4.equals("1")){
+                        x_d4 = "0";
+                    }
+                    showResultSimulation();
+                }
             }
         });
 
@@ -58,7 +115,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeCActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                d2 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -74,7 +131,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                d4 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -90,7 +147,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                a1 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -106,7 +163,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                a2 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -122,7 +179,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                a4 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -138,7 +195,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                b1 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -154,7 +211,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                b2 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -170,7 +227,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                b4 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -186,7 +243,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                c1 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -202,7 +259,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                c2 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -218,7 +275,7 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-//                Toast.makeText(ModeAActivity.this, (String) parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                c4 = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -243,11 +300,29 @@ public class ModeCActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                spinner_d2.setSelection(0);
+                spinner_d4.setSelection(0);
+                spinner_a1.setSelection(0);
+                spinner_a2.setSelection(0);
+                spinner_a4.setSelection(0);
+                spinner_b1.setSelection(0);
+                spinner_b2.setSelection(0);
+                spinner_b4.setSelection(0);
+                spinner_c1.setSelection(0);
+                spinner_c2.setSelection(0);
+                spinner_c4.setSelection(0);
             }
         });
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
+    }
+
+    public String XOR(String A, String B){
+        if (A.equals("0") && B.equals("0")){
+            xor = "0";
+        }
+        return xor;
     }
 
     @Override

@@ -2,6 +2,7 @@ package stta.ac.id.simulasimodeacradar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -149,6 +150,9 @@ public class ModeCActivity extends AppCompatActivity {
                         x_b4 = "1";
                     }
 
+                    binner = (Integer.parseInt(x_d2)*128) + (Integer.parseInt(x_d4)*64) + (Integer.parseInt(x_a1)*32)  + (Integer.parseInt(x_a2)*16) + (Integer.parseInt(x_a4)*8) + (Integer.parseInt(x_b1)*4) + (Integer.parseInt(x_b2)*2) + (Integer.parseInt(x_b4)*1);
+                    result = (binner * 500) - 1000;
+                    int mod_result = result % 500;
                     if ((c1+c2+c4).equals("100")){
                         aturanc1c2c4 = +200;
                     } if ((c1+c2+c4).equals("110")){
@@ -160,12 +164,9 @@ public class ModeCActivity extends AppCompatActivity {
                     } if ((c1+c2+c4).equals("001")){
                         aturanc1c2c4 = -200;
                     }
-
-                    binner = (Integer.parseInt(x_d2)*128) + (Integer.parseInt(x_d4)*64) + (Integer.parseInt(x_a1)*32)  + (Integer.parseInt(x_a2)*16) + (Integer.parseInt(x_a4)*8) + (Integer.parseInt(x_b1)*4) + (Integer.parseInt(x_b2)*2) + (Integer.parseInt(x_b4)*1);
-                    result = (binner * 500) - 1000;
                     final_result = result + aturanc1c2c4;
 
-                    showResultSimulation(addDotSeparator(final_result) + " feet");
+                    showResultSimulation(String.valueOf(final_result));
 //                    Toast.makeText(ModeCActivity.this, x_d2 + x_d4 + x_a1 + x_a2 + x_a4 + x_b1 + x_b2 + x_b4, Toast.LENGTH_SHORT).show();
 //                    Log.i("Botika",String.valueOf (final_result));
                 }
@@ -349,6 +350,7 @@ public class ModeCActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void showResultSimulation(String final_result) {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
@@ -360,8 +362,14 @@ public class ModeCActivity extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
-        TextView txt_result = dialog.findViewById(R.id.txt_result_modec);
-        txt_result.setText(final_result);
+        TextView txt_result_feet = dialog.findViewById(R.id.txt_result_modec_feet);
+        TextView txt_result_meter = dialog.findViewById(R.id.txt_result_modec_meter);
+
+        txt_result_feet.setText(addDotSeparator(Double.parseDouble(final_result))   + " feet" );
+
+        Double result_meter = Double.parseDouble(final_result) * 0.3048;
+        txt_result_meter.setText(addDotSeparator(result_meter) + " meter" );
+
 
 
         ((ImageButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(new View.OnClickListener() {
@@ -386,7 +394,7 @@ public class ModeCActivity extends AppCompatActivity {
         dialog.getWindow().setAttributes(lp);
     }
 
-    public static String addDotSeparator(int d) {
+    public static String addDotSeparator(double d) {
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
         formatter .applyPattern("#,###");
         return formatter.format(d);

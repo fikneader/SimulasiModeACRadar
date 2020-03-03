@@ -55,7 +55,7 @@
         android:padding="@dimen/spacing_mlarge">
 
         <TextView
-            android:id="@+id/txt_result_modec"
+            android:id="@+id/txt_result_modec_feet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_middle"
@@ -63,6 +63,20 @@
             android:layout_marginRight="@dimen/spacing_middle"
             android:gravity="center_horizontal"
             android:text="32.750 feet"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/grey_40"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/txt_result_modec_meter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_middle"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginRight="@dimen/spacing_middle"
+            android:gravity="center_horizontal"
+            android:text="10000 meter"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/grey_40"

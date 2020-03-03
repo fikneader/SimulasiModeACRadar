@@ -15,12 +15,22 @@
         app:srcCompat="@drawable/icon_radar" />
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="SIMULASI MODE AC RADAR"
+        android:text="SIMULASI JAWABAN"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="MODE A DAN MODE C RADAR"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"

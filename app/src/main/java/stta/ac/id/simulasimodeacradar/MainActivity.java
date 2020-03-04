@@ -1,7 +1,9 @@
 package stta.ac.id.simulasimodeacradar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
@@ -43,9 +45,29 @@ public class MainActivity extends AppCompatActivity {
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                showPopupClose();
             }
         });
+    }
+
+    public void showPopupClose(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogeTheme);
+        builder.setTitle("Peringatan");
+        builder.setMessage("Apa kamu ingin keluar aplikasi?")
+                .setCancelable(false)
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //usually called after the user logs out of your app
+                        finish();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public boolean onCreateOptionsMenu(android.view.Menu menu) {

@@ -20,7 +20,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="SIMULASI JAWABAN"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/grey_100_"
         android:textSize="20sp"
         android:textStyle="bold"
         android:typeface="monospace" />
@@ -31,7 +31,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:text="MODE A DAN MODE C RADAR"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/grey_100_"
         android:textSize="20sp"
         android:textStyle="bold"
         android:typeface="monospace" />
@@ -50,12 +50,12 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="20dp"
+                android:background="@color/grey_100_"
                 android:gravity="center"
                 android:scrollbars="vertical"
                 android:text="Mode A"
                 android:textColor="#E6E6E6"
-                android:textSize="18sp"
-                android:background="@color/colorPrimary"/>
+                android:textSize="18sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_mode_c"
@@ -64,10 +64,10 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="20dp"
+                android:background="@color/grey_100_"
                 android:gravity="center"
                 android:scrollbars="vertical"
                 android:text="Mode C"
-                android:background="@color/colorPrimary"
                 android:textColor="#E6E6E6"
                 android:textSize="18sp" />
 
@@ -78,12 +78,12 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="20dp"
+                android:background="@color/grey_100_"
                 android:gravity="center"
                 android:scrollbars="vertical"
                 android:text="Keluar"
                 android:textColor="#E6E6E6"
-                android:textSize="18sp"
-                android:background="@color/colorPrimary" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 

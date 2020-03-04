@@ -152,17 +152,31 @@ public class ModeCActivity extends AppCompatActivity {
 
                     binner = (Integer.parseInt(x_d2)*128) + (Integer.parseInt(x_d4)*64) + (Integer.parseInt(x_a1)*32)  + (Integer.parseInt(x_a2)*16) + (Integer.parseInt(x_a4)*8) + (Integer.parseInt(x_b1)*4) + (Integer.parseInt(x_b2)*2) + (Integer.parseInt(x_b4)*1);
                     result = (binner * 500) - 1000;
-                    int mod_result = result % 500;
-                    if ((c1+c2+c4).equals("100")){
-                        aturanc1c2c4 = +200;
-                    } if ((c1+c2+c4).equals("110")){
-                        aturanc1c2c4 = +100;
-                    } if ((c1+c2+c4).equals("010")){
-                        aturanc1c2c4 = 0;
-                    } if ((c1+c2+c4).equals("011")){
-                        aturanc1c2c4 = -100;
-                    } if ((c1+c2+c4).equals("001")){
-                        aturanc1c2c4 = -200;
+                    int mod_result = result % 1000;
+                    if (mod_result == 0){
+                        if ((c1+c2+c4).equals("100")){
+                            aturanc1c2c4 = +200;
+                        } if ((c1+c2+c4).equals("110")){
+                            aturanc1c2c4 = +100;
+                        } if ((c1+c2+c4).equals("010")){
+                            aturanc1c2c4 = 0;
+                        } if ((c1+c2+c4).equals("011")){
+                            aturanc1c2c4 = -100;
+                        } if ((c1+c2+c4).equals("001")){
+                            aturanc1c2c4 = -200;
+                        }
+                    } else {
+                        if ((c1+c2+c4).equals("100")){
+                            aturanc1c2c4 = -200;
+                        } if ((c1+c2+c4).equals("110")){
+                            aturanc1c2c4 = -100;
+                        } if ((c1+c2+c4).equals("010")){
+                            aturanc1c2c4 = 0;
+                        } if ((c1+c2+c4).equals("011")){
+                            aturanc1c2c4 = +100;
+                        } if ((c1+c2+c4).equals("001")){
+                            aturanc1c2c4 = +200;
+                        }
                     }
                     final_result = result + aturanc1c2c4;
 
@@ -368,7 +382,7 @@ public class ModeCActivity extends AppCompatActivity {
         txt_result_feet.setText(addDotSeparator(Double.parseDouble(final_result))   + " feet" );
 
         Double result_meter = Double.parseDouble(final_result) * 0.3048;
-        txt_result_meter.setText(addDotSeparator(result_meter) + " meter" );
+        txt_result_meter.setText(addDotSeparator(result_meter) + " meters" );
 
 
 

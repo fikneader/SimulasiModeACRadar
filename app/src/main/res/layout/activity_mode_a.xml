@@ -552,7 +552,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/grey_100_"
             android:gravity="center"
             android:scrollbars="vertical"
             android:text="SIMULASIKAN"
